@@ -27,9 +27,9 @@ export default function Home() {
   };
 
   const services = [
-    { title: 'Social Media Management', desc: 'Grow your audience and engagement with targeted, creative content.' },
-    { title: 'SEO Optimization', desc: 'Rank higher on Google and drive organic traffic to your website.' },
-    { title: 'Google Ads (PPC)', desc: 'Maximize your ROI with data-driven performance marketing campaigns.' }
+    { title: 'Social Media Management', desc: 'Build a loyal community and scale your brand awareness with strategic, engaging content across all platforms.' },
+    { title: 'SEO Optimization', desc: 'Dominate search results and capture high-intent traffic with our data-driven on-page and off-page SEO strategies.' },
+    { title: 'Google Ads (PPC)', desc: 'Maximize your ROI with hyper-targeted paid campaigns designed to turn clicks into paying customers instantly.' }
   ];
 
   const portfolio = [
@@ -41,28 +41,31 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="container" style={{ padding: '6rem 0', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
-          Elevate Your Brand's Digital Presence
-        </h1>
-        <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
-          We are a premium marketing agency specializing in Social Media, SEO, and Performance Marketing.
-        </p>
-        <div className="flex justify-center gap-4">
-          <a href="#contact" className="btn btn-primary">Start a Project</a>
-          <a href="#portfolio" className="btn btn-outline">View Our Work</a>
+      <section className="container" style={{ padding: '8rem 0', textAlign: 'center' }}>
+        <div className="animate-fade-in-up">
+          <h1 style={{ fontSize: '4rem', fontWeight: 'bold', marginBottom: '1.5rem', letterSpacing: '-0.03em', lineHeight: '1.1' }}>
+            Dominate Your Market.<br />
+            <span style={{ color: 'var(--accent-color)' }}>Scale Your Brand.</span>
+          </h1>
+          <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', maxWidth: '650px', margin: '0 auto 2.5rem auto' }}>
+            We are INKONIK—a premium digital marketing agency specializing in high-converting Social Media Strategies, elite SEO Optimization, and ROI-focused Google Ads.
+          </p>
+          <div className="flex justify-center gap-4">
+            <a href="#contact" className="btn btn-primary hover-lift">Start a Project</a>
+            <a href="#portfolio" className="btn btn-outline hover-lift">View Our Work</a>
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" style={{ backgroundColor: 'var(--bg-secondary)', padding: '5rem 0' }}>
+      <section id="services" style={{ backgroundColor: 'var(--bg-secondary)', padding: '6rem 0' }}>
         <div className="container">
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3rem', textAlign: 'center' }}>Our Services</h2>
+          <h2 className="animate-fade-in-up" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3.5rem', textAlign: 'center' }}>Our Expertise</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {services.map((s, i) => (
-              <div key={i} style={{ background: 'white', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>{s.title}</h3>
-                <p style={{ color: 'var(--text-muted)' }}>{s.desc}</p>
+              <div key={i} className={`hover-lift animate-fade-in-up delay-${(i + 1) * 100}`} style={{ background: 'white', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>{s.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -70,15 +73,15 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="container" style={{ padding: '5rem 0' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3rem', textAlign: 'center' }}>Recent Work</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+      <section id="portfolio" className="container" style={{ padding: '6rem 0' }}>
+        <h2 className="animate-fade-in-up" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3.5rem', textAlign: 'center' }}>Proven Results</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
           {portfolio.map((p, i) => (
-            <div key={i} style={{ border: '1px solid var(--border-color)', borderRadius: '8px', overflow: 'hidden', textAlign: 'center' }}>
-              <img src={p.image} alt={p.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
-              <div style={{ padding: '1.5rem' }}>
+            <div key={i} className={`hover-lift animate-fade-in-up delay-${(i + 1) * 100}`} style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', textAlign: 'left', background: 'white' }}>
+              <img src={p.image} alt={p.name} style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
+              <div style={{ padding: '2rem' }}>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{p.name}</h3>
-                <p style={{ color: 'var(--accent-color)', fontWeight: '500' }}>{p.result}</p>
+                <p style={{ color: 'var(--accent-color)', fontWeight: '600', fontSize: '1.1rem' }}>{p.result}</p>
               </div>
             </div>
           ))}
@@ -134,8 +137,16 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: '1px solid var(--border-color)', padding: '2rem 0', textAlign: 'center', color: 'var(--text-muted)' }}>
-        <p>&copy; {new Date().getFullYear()} INKONIK. All rights reserved.</p>
+
+      {/* Footer */}
+      <footer style={{ backgroundColor: '#000', color: '#fff', padding: '4rem 0 2rem 0', textAlign: 'center' }}>
+        <div className="container">
+          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>INKONIK.</h2>
+          <p style={{ color: '#aaa', marginBottom: '2rem' }}>Your growth partner for Social Media, SEO, and Google Ads.</p>
+          <div style={{ borderTop: '1px solid #333', paddingTop: '2rem', color: '#666', fontSize: '0.875rem' }}>
+            &copy; {new Date().getFullYear()} INKONIK Marketing Agency. All rights reserved.
+          </div>
+        </div>
       </footer>
     </div>
   );
