@@ -16,7 +16,9 @@ export const AuthProvider = ({ children }) => {
         setIsAdmin(false);
         return;
       }
-      const { data } = await supabase.from('profiles').select('is_admin').eq('id', sessionUser.id).single();
+      console.log("Checking admin status for:", sessionUser.email);
+      const { data, error } = await supabase.from('profiles').select('is_admin').eq('id', sessionUser.id).single();
+      console.log("Profile data returned:", data, "Error:", error);
       if (data) setIsAdmin(data.is_admin);
     };
 

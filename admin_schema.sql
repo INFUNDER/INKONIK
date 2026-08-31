@@ -16,13 +16,7 @@ ON public.profiles FOR SELECT
 TO authenticated 
 USING (auth.uid() = id);
 
--- Allow admins to read all profiles
-CREATE POLICY "Admins can view all profiles" 
-ON public.profiles FOR SELECT 
-TO authenticated 
-USING (
-  (SELECT is_admin FROM public.profiles WHERE id = auth.uid()) = true
-);
+
 
 -- 2. Function to automatically create a profile when a new user signs up
 CREATE OR REPLACE FUNCTION public.handle_new_user() 
