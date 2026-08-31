@@ -21,60 +21,66 @@ export default function Home() {
     }
   };
 
-  const services = [
-    { title: 'Social Media Management', desc: 'Build a loyal community and scale your brand awareness with strategic, engaging content across all platforms.' },
-    { title: 'SEO Optimization', desc: 'Dominate search results and capture high-intent traffic with our data-driven on-page and off-page SEO strategies.' },
-    { title: 'Google Ads (PPC)', desc: 'Maximize your ROI with hyper-targeted paid campaigns designed to turn clicks into paying customers instantly.' }
+  const capabilities = [
+    { title: 'Digital Strategy', desc: 'Comprehensive roadmaps to scale enterprise presence and drive digital transformation.' },
+    { title: 'Search Engine Dominance', desc: 'Technical SEO and high-authority link acquisition for global search visibility.' },
+    { title: 'Performance Media', desc: 'Data-driven programmatic and search advertising designed for maximal enterprise ROI.' }
   ];
 
-  const portfolio = [
-    { name: 'Analytics Pro', result: '150% Increase in Leads', image: '/images/portfolio_1.jpg' },
-    { name: 'Aesthetik Commerce', result: '3x ROAS on Google Ads', image: '/images/portfolio_2.jpg' },
-    { name: 'Viral Campaign', result: '10k New Followers in 3 Months', image: '/images/portfolio_3.jpg' }
+  const caseStudies = [
+    { name: 'Analytics Pro', result: '150% Increase in Enterprise Leads', image: '/images/portfolio_1.jpg' },
+    { name: 'Aesthetik Commerce', result: 'Global E-Commerce Transformation', image: '/images/portfolio_2.jpg' },
+    { name: 'CloudNine Infrastructure', result: 'B2B Market Penetration Strategy', image: '/images/portfolio_3.jpg' }
   ];
 
   const testimonials = [
-    { text: "INKONIK completely transformed our digital presence. Our lead volume tripled within the first quarter.", author: "Sarah Jenkins", role: "CMO, TechStartup" },
-    { text: "The ROI on their Google Ads campaigns is unparalleled. They don't just generate traffic, they generate revenue.", author: "Marcus Thorne", role: "Founder, EcoRetail" },
-    { text: "Their SEO strategy put us on page 1 for our most competitive keywords. Highly recommend this elite team.", author: "Elena Rostova", role: "VP Marketing, CloudNine" }
+    { text: "INKONIK operates at a level of strategic depth that is rare to find. They are a true extension of our executive team.", author: "Sarah Jenkins", role: "CMO, TechStartup" },
+    { text: "Their performance media architecture completely revitalized our global customer acquisition strategy.", author: "Marcus Thorne", role: "CEO, EcoRetail Global" },
+    { text: "Unparalleled execution and analytics. INKONIK's strategies are the backbone of our digital growth.", author: "Elena Rostova", role: "VP Marketing, CloudNine" }
   ];
 
   // Shared animation variants
   const fadeUpVariant = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
   
   const staggerContainer = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="container section-padding" style={{ textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div className="hero-grid"></div>
-        <div className="hero-bg-gradient"></div>
+      {/* Enterprise Hero Section */}
+      <section style={{ height: '90vh', position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <div className="hero-video-container">
+          {/* PLACEHOLDER VIDEO: Replace 'background.mp4' with your actual video file in the public folder */}
+          <video autoPlay loop muted playsInline>
+            {/* <source src="/background.mp4" type="video/mp4" /> */}
+          </video>
+        </div>
+        <div className="hero-overlay"></div>
         
-        <motion.div 
-          initial="hidden" 
-          animate="visible" 
-          variants={staggerContainer}
-          style={{ position: 'relative', zIndex: 10 }}
-        >
-          <motion.h1 variants={fadeUpVariant} className="hero-title">
-            Dominate Your Market.<br />
-            <span style={{ color: 'var(--accent-color)' }}>Scale Your Brand.</span>
-          </motion.h1>
-          <motion.p variants={fadeUpVariant} className="hero-subtitle">
-            We are INKONIK—a premium digital marketing agency specializing in high-converting Social Media Strategies, elite SEO Optimization, and ROI-focused Google Ads.
-          </motion.p>
-          <motion.div variants={fadeUpVariant} className="flex flex-wrap-mobile justify-center gap-4">
-            <a href="#contact" className="btn btn-primary btn-premium" style={{ color: 'white', border: 'none' }}>Start a Project</a>
-            <a href="#portfolio" className="btn btn-outline hover-lift" style={{ background: 'white' }}>View Our Work</a>
+        <div className="container" style={{ position: 'relative', zIndex: 10, width: '100%' }}>
+          <motion.div 
+            initial="hidden" 
+            animate="visible" 
+            variants={staggerContainer}
+          >
+            <motion.h1 variants={fadeUpVariant} className="hero-title" style={{ color: 'white' }}>
+              Let there be<br />
+              <span style={{ color: 'var(--accent-color)' }}>Growth.</span>
+            </motion.h1>
+            <motion.p variants={fadeUpVariant} className="hero-subtitle" style={{ color: '#eaeaea' }}>
+              We architect digital dominance. Elite strategy, performance media, and search optimization for ambitious global brands.
+            </motion.p>
+            <motion.div variants={fadeUpVariant} className="flex flex-wrap-mobile gap-4">
+              <a href="#contact" className="btn btn-primary">Partner With Us <span className="ik-mark">IK</span></a>
+              <a href="#case-studies" className="btn btn-outline" style={{ borderColor: 'white', color: 'white' }}>Explore Capabilities <span className="ik-mark" style={{ color: 'white' }}>IK</span></a>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Infinite Logo Marquee */}
@@ -86,7 +92,6 @@ export default function Home() {
           <span>BLOOMBERG</span>
           <span>FAST COMPANY</span>
           <span>INC 5000</span>
-          {/* Duplicate for seamless loop */}
           <span>FORBES</span>
           <span>TECHCRUNCH</span>
           <span>WIRED</span>
@@ -96,8 +101,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      {/* Capabilities Section */}
+      <section id="capabilities" className="section-padding" style={{ backgroundColor: 'var(--bg-main)' }}>
         <motion.div 
           className="container"
           initial="hidden"
@@ -105,34 +110,35 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.h2 variants={fadeUpVariant} className="section-title">Our Expertise</motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {services.map((s, i) => (
-              <motion.div key={i} variants={fadeUpVariant} className="hover-lift" style={{ background: 'white', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', border: '1px solid var(--border-color)' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>{s.title}</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>{s.desc}</p>
+          <motion.h2 variants={fadeUpVariant} className="section-title">Capabilities</motion.h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+            {capabilities.map((s, i) => (
+              <motion.div key={i} variants={fadeUpVariant} className="enterprise-card">
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '900', marginBottom: '1.5rem', textTransform: 'uppercase' }}>{s.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.125rem' }}>{s.desc}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="container section-padding">
+      {/* Case Studies Section */}
+      <section id="case-studies" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <motion.div
+          className="container"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.h2 variants={fadeUpVariant} className="section-title">Proven Results</motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
-            {portfolio.map((p, i) => (
-              <motion.div key={i} variants={fadeUpVariant} className="hover-lift" style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', textAlign: 'left', background: 'white' }}>
-                <img src={p.image} alt={p.name} style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
-                <div style={{ padding: '2rem' }}>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{p.name}</h3>
-                  <p style={{ color: 'var(--accent-color)', fontWeight: '600', fontSize: '1.1rem' }}>{p.result}</p>
+          <motion.h2 variants={fadeUpVariant} className="section-title">Case Studies</motion.h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
+            {caseStudies.map((p, i) => (
+              <motion.div key={i} variants={fadeUpVariant} style={{ background: 'white', border: '1px solid var(--border-color)', position: 'relative' }}>
+                <img src={p.image} alt={p.name} style={{ width: '100%', height: '300px', objectFit: 'cover' }} />
+                <div style={{ padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '0.5rem', textTransform: 'uppercase' }}>{p.name}</h3>
+                  <p style={{ color: 'var(--accent-color)', fontWeight: '700', fontSize: '1.125rem', letterSpacing: '0.05em' }}>{p.result}</p>
                 </div>
               </motion.div>
             ))}
@@ -140,7 +146,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Insights / Testimonials Section */}
       <section style={{ backgroundColor: '#000', color: '#fff' }} className="section-padding">
         <motion.div 
           className="container"
@@ -149,14 +155,14 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <motion.h2 variants={fadeUpVariant} className="section-title" style={{ color: '#fff' }}>Client Success Stories</motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <motion.h2 variants={fadeUpVariant} className="section-title" style={{ color: '#fff', borderLeftColor: 'var(--accent-color)' }}>Latest Insights</motion.h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
             {testimonials.map((t, i) => (
-              <motion.div key={i} variants={fadeUpVariant} style={{ background: '#111', padding: '2.5rem', borderRadius: '12px', border: '1px solid #333' }}>
-                <p style={{ fontSize: '1.1rem', fontStyle: 'italic', marginBottom: '1.5rem', color: '#ccc' }}>"{t.text}"</p>
+              <motion.div key={i} variants={fadeUpVariant} style={{ background: '#111', padding: '3rem', border: '1px solid #333' }}>
+                <p style={{ fontSize: '1.25rem', fontWeight: '300', marginBottom: '2rem', color: '#eaeaea', lineHeight: '1.8' }}>"{t.text}"</p>
                 <div>
-                  <p style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{t.author}</p>
-                  <p style={{ color: 'var(--accent-color)', fontSize: '0.875rem' }}>{t.role}</p>
+                  <p style={{ fontWeight: '700', fontSize: '1.125rem', textTransform: 'uppercase' }}>{t.author}</p>
+                  <p style={{ color: 'var(--accent-color)', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{t.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -165,7 +171,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" style={{ backgroundColor: 'var(--bg-secondary)', padding: '5rem 0' }}>
+      <section id="contact" style={{ backgroundColor: 'var(--accent-color)', color: 'white', padding: '6rem 0' }}>
         <motion.div 
           className="container"
           initial="hidden"
@@ -173,48 +179,69 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <div style={{ maxWidth: '600px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', border: '1px solid var(--border-color)' }}>
-            <motion.h2 variants={fadeUpVariant} style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center' }}>Ready to Scale?</motion.h2>
-            <motion.p variants={fadeUpVariant} style={{ color: 'var(--text-muted)', textAlign: 'center', marginBottom: '2rem' }}>Let's discuss how we can accelerate your growth.</motion.p>
+          <div style={{ maxWidth: '700px', margin: '0 auto', background: '#000', padding: '4rem', boxShadow: '20px 20px 0px rgba(0,0,0,0.3)' }}>
+            <motion.h2 variants={fadeUpVariant} style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '1.5rem', textTransform: 'uppercase' }}>Initiate Transformation</motion.h2>
+            <motion.p variants={fadeUpVariant} style={{ color: '#ccc', marginBottom: '3rem', fontSize: '1.125rem' }}>Connect with our global strategy team to define your digital roadmap.</motion.p>
             
             <motion.form variants={fadeUpVariant} onSubmit={handleContactSubmit}>
               <div className="form-group">
-                <label>Name</label>
-                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="John Doe" />
+                <label style={{ color: '#fff' }}>Full Name</label>
+                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} style={{ background: '#111', color: 'white', borderColor: '#333' }} />
               </div>
               <div className="form-group">
-                <label>Email</label>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@example.com" />
+                <label style={{ color: '#fff' }}>Corporate Email</label>
+                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} style={{ background: '#111', color: 'white', borderColor: '#333' }} />
               </div>
               <div className="form-group">
-                <label>Service Interested In</label>
-                <input type="text" value={formData.service} onChange={(e) => setFormData({...formData, service: e.target.value})} placeholder="SEO, Social Media, etc." />
+                <label style={{ color: '#fff' }}>Area of Interest</label>
+                <input type="text" value={formData.service} onChange={(e) => setFormData({...formData, service: e.target.value})} style={{ background: '#111', color: 'white', borderColor: '#333' }} />
               </div>
               <div className="form-group">
-                <label>Message</label>
+                <label style={{ color: '#fff' }}>Strategic Objectives</label>
                 <textarea 
                   required 
-                  rows="4" 
-                  style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
+                  rows="5" 
+                  style={{ width: '100%', padding: '1rem', border: '1px solid #333', background: '#111', color: 'white', fontFamily: 'inherit', resize: 'vertical' }}
                   value={formData.message} 
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  placeholder="Tell us about your project goals..."
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary btn-premium" style={{ width: '100%', color: 'white', border: 'none' }}>Send Message</button>
-              {status && <p style={{ marginTop: '1rem', textAlign: 'center', color: status.includes('Error') ? 'red' : 'green', fontWeight: '500' }}>{status}</p>}
+              <button type="submit" className="btn btn-primary" style={{ width: '100%', backgroundColor: 'var(--accent-color)', color: 'white', marginTop: '1rem' }}>Submit Inquiry <span className="ik-mark" style={{ color: 'white' }}>IK</span></button>
+              {status && <p style={{ marginTop: '1.5rem', textAlign: 'center', color: status.includes('Error') ? '#ff4d4f' : '#dcfce3', fontWeight: '700' }}>{status}</p>}
             </motion.form>
           </div>
         </motion.div>
       </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#000', color: '#fff', padding: '4rem 0 2rem 0', textAlign: 'center' }}>
+      <footer style={{ backgroundColor: '#000', color: '#fff', padding: '6rem 0 3rem 0' }}>
         <div className="container">
-          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '-0.05em' }}>INKONIK.</h2>
-          <p style={{ color: '#aaa', marginBottom: '2rem' }}>Your elite growth partner for Social Media, SEO, and Google Ads.</p>
-          <div style={{ borderTop: '1px solid #333', paddingTop: '2rem', color: '#666', fontSize: '0.875rem' }}>
-            &copy; {new Date().getFullYear()} INKONIK Marketing Agency. All rights reserved.
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', borderBottom: '1px solid #333', paddingBottom: '4rem', marginBottom: '3rem' }}>
+            <div>
+              <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '1rem', letterSpacing: '-0.05em' }}>INKONIK.</h2>
+              <p style={{ color: '#aaa', maxWidth: '300px' }}>Global digital transformation and performance strategy.</p>
+            </div>
+            <div style={{ display: 'flex', gap: '4rem' }}>
+              <div>
+                <h4 style={{ textTransform: 'uppercase', fontWeight: '700', marginBottom: '1.5rem', color: 'var(--accent-color)' }}>About</h4>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem', cursor: 'pointer' }}>Our Story</p>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem', cursor: 'pointer' }}>Leadership</p>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem', cursor: 'pointer' }}>Careers</p>
+              </div>
+              <div>
+                <h4 style={{ textTransform: 'uppercase', fontWeight: '700', marginBottom: '1.5rem', color: 'var(--accent-color)' }}>Connect</h4>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem', cursor: 'pointer' }}>LinkedIn</p>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem', cursor: 'pointer' }}>Twitter</p>
+                <p style={{ color: '#ccc', marginBottom: '0.5rem', cursor: 'pointer' }}>Contact</p>
+              </div>
+            </div>
+          </div>
+          <div style={{ color: '#666', fontSize: '0.875rem', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <p>&copy; {new Date().getFullYear()} INKONIK Global. All rights reserved.</p>
+            <p style={{ display: 'flex', gap: '2rem' }}>
+              <span>Privacy Policy</span>
+              <span>Terms of Service</span>
+            </p>
           </div>
         </div>
       </footer>

@@ -7,9 +7,17 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header style={{ borderBottom: '1px solid var(--border-color)', padding: '1rem 0', position: 'relative' }}>
+    <header style={{ 
+      backgroundColor: '#000', 
+      color: '#fff',
+      padding: '1.5rem 0', 
+      position: 'sticky', 
+      top: 0, 
+      zIndex: 1000,
+      borderBottom: '4px solid var(--accent-color)'
+    }}>
       <div className="container flex justify-between items-center">
-        <Link to="/" style={{ fontSize: '1.25rem', fontWeight: 'bold', letterSpacing: '-0.05em' }}>
+        <Link to="/" style={{ fontSize: '1.75rem', fontWeight: '900', letterSpacing: '-0.05em' }}>
           INKONIK.
         </Link>
         
@@ -19,18 +27,18 @@ export default function Navbar() {
 
         <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/#services" onClick={() => setIsMenuOpen(false)}>Services</Link>
-          <Link to="/#portfolio" onClick={() => setIsMenuOpen(false)}>Portfolio</Link>
+          <Link to="/#capabilities" onClick={() => setIsMenuOpen(false)}>Capabilities</Link>
+          <Link to="/#case-studies" onClick={() => setIsMenuOpen(false)}>Case Studies</Link>
           
           {user ? (
             <>
-              {isAdmin && <Link to="/admin" style={{ fontWeight: '500', color: 'var(--accent-color)' }} onClick={() => setIsMenuOpen(false)}>Admin</Link>}
-              <Link to="/dashboard" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }} onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
+              {isAdmin && <Link to="/admin" style={{ color: 'var(--accent-color)' }} onClick={() => setIsMenuOpen(false)}>Admin Console</Link>}
+              <Link to="/dashboard" className="btn btn-primary" style={{ backgroundColor: 'white', color: 'black' }} onClick={() => setIsMenuOpen(false)}>Portal <span className="ik-mark">IK</span></Link>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn btn-outline" style={{ padding: '0.5rem 1rem' }} onClick={() => setIsMenuOpen(false)}>Log In</Link>
-              <Link to="/signup" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }} onClick={() => setIsMenuOpen(false)}>Sign Up</Link>
+              <Link to="/login" style={{ color: '#ccc' }} onClick={() => setIsMenuOpen(false)}>Client Login</Link>
+              <Link to="/signup" className="btn btn-primary" style={{ backgroundColor: 'var(--accent-color)', color: 'white', borderColor: 'var(--accent-color)' }} onClick={() => setIsMenuOpen(false)}>Get Started <span className="ik-mark" style={{ color: 'white' }}>IK</span></Link>
             </>
           )}
         </nav>
