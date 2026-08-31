@@ -1,12 +1,12 @@
 :root {
-  --primary-color: #000000;
-  --secondary-color: #ffffff;
-  --accent-color: #7400e0; /* Accenture-style Deep Purple */
-  --text-main: #000000;
-  --text-muted: #4a4a4a;
-  --bg-main: #ffffff;
-  --bg-secondary: #f4f4f4;
-  --border-color: #cccccc;
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --accent-color: #7400e0;
+  --text-main: #ffffff;
+  --text-muted: #a3a3a3;
+  --bg-main: #000000;
+  --bg-secondary: #0a0a0a;
+  --border-color: #333333;
   
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
@@ -66,11 +66,12 @@ a {
   margin-left: 0.75rem;
   font-weight: 900;
   color: var(--accent-color);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
 }
 
 .btn:hover .ik-mark {
-  transform: translateX(5px);
+  transform: rotate(90deg);
 }
 
 .btn-primary {
@@ -129,6 +130,20 @@ a {
   line-height: 1.1;
   border-left: 8px solid var(--accent-color);
   padding-left: 1.5rem;
+}
+
+/* Sticky Background Text for Case Studies */
+.sticky-bg-text {
+  position: sticky;
+  top: 35vh;
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  text-align: center;
+  z-index: 0;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* Enterprise Blocks (Sharp, high contrast) */

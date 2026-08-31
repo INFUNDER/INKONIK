@@ -113,7 +113,7 @@ export default function Home() {
           <motion.h2 variants={fadeUpVariant} className="section-title">Capabilities</motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
             {capabilities.map((s, i) => (
-              <motion.div key={i} variants={fadeUpVariant} className="enterprise-card">
+              <motion.div key={i} variants={fadeUpVariant} className="enterprise-card" style={{ background: 'var(--bg-secondary)', border: 'none' }}>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: '900', marginBottom: '1.5rem', textTransform: 'uppercase' }}>{s.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1.125rem' }}>{s.desc}</p>
               </motion.div>
@@ -122,28 +122,29 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Case Studies Section */}
-      <section id="case-studies" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <motion.div
-          className="container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 variants={fadeUpVariant} className="section-title">Case Studies</motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
-            {caseStudies.map((p, i) => (
-              <motion.div key={i} variants={fadeUpVariant} style={{ background: 'white', border: '1px solid var(--border-color)', position: 'relative' }}>
-                <img src={p.image} alt={p.name} style={{ width: '100%', height: '300px', objectFit: 'cover' }} />
-                <div style={{ padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '0.5rem', textTransform: 'uppercase' }}>{p.name}</h3>
-                  <p style={{ color: 'var(--accent-color)', fontWeight: '700', fontSize: '1.125rem', letterSpacing: '0.05em' }}>{p.result}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+      {/* Case Studies Section (Sticky Scroll) */}
+      <section id="case-studies" style={{ backgroundColor: 'var(--bg-main)', position: 'relative', paddingTop: '10vh' }}>
+        <div className="sticky-bg-text">CASE STUDIES</div>
+        <div className="container section-padding" style={{ position: 'relative', zIndex: 10, paddingBottom: '20vh' }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '8rem' }}>
+              {caseStudies.map((p, i) => (
+                <motion.div key={i} variants={fadeUpVariant} style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', position: 'relative' }}>
+                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '350px', objectFit: 'cover', opacity: 0.8 }} />
+                  <div style={{ padding: '2.5rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '0.5rem', textTransform: 'uppercase' }}>{p.name}</h3>
+                    <p style={{ color: 'var(--accent-color)', fontWeight: '700', fontSize: '1.125rem', letterSpacing: '0.05em' }}>{p.result}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Insights / Testimonials Section */}
@@ -171,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" style={{ backgroundColor: 'var(--accent-color)', color: 'white', padding: '6rem 0' }}>
+      <section id="contact" style={{ backgroundColor: 'var(--accent-color)', color: 'white', padding: '8rem 0' }}>
         <motion.div 
           className="container"
           initial="hidden"
@@ -179,7 +180,7 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <div style={{ maxWidth: '700px', margin: '0 auto', background: '#000', padding: '4rem', boxShadow: '20px 20px 0px rgba(0,0,0,0.3)' }}>
+          <div style={{ maxWidth: '700px', margin: '0 auto', background: '#000', padding: '4rem', boxShadow: '20px 20px 0px rgba(0,0,0,0.5)' }}>
             <motion.h2 variants={fadeUpVariant} style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '1.5rem', textTransform: 'uppercase' }}>Initiate Transformation</motion.h2>
             <motion.p variants={fadeUpVariant} style={{ color: '#ccc', marginBottom: '3rem', fontSize: '1.125rem' }}>Connect with our global strategy team to define your digital roadmap.</motion.p>
             
