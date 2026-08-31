@@ -28,9 +28,9 @@ export default function Home() {
   ];
 
   const caseStudies = [
-    { name: 'Analytics Pro', result: '150% Increase in Enterprise Leads', image: '/images/portfolio_1.jpg' },
-    { name: 'Aesthetik Commerce', result: 'Global E-Commerce Transformation', image: '/images/portfolio_2.jpg' },
-    { name: 'CloudNine Infrastructure', result: 'B2B Market Penetration Strategy', image: '/images/portfolio_3.jpg' }
+    { name: 'Analytics Pro', result: '150% Increase in Enterprise Leads', metric: '150%', desc: 'in high-value B2B pipeline generation' },
+    { name: 'Aesthetik Commerce', result: 'Global E-Commerce Transformation', metric: '3x', desc: 'return on global performance media' },
+    { name: 'CloudNine Infrastructure', result: 'B2B Market Penetration Strategy', metric: '#1', desc: 'search share in cloud infrastructure' }
   ];
 
   const testimonials = [
@@ -122,23 +122,26 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Case Studies Section (Sticky Scroll) */}
-      <section id="case-studies" style={{ backgroundColor: 'var(--bg-main)', position: 'relative', paddingTop: '10vh' }}>
-        <div className="sticky-bg-text">CASE STUDIES</div>
-        <div className="container section-padding" style={{ position: 'relative', zIndex: 10, paddingBottom: '20vh' }}>
+      {/* Case Studies Section (Standardized Enterprise Layout) */}
+      <section id="case-studies" className="section-padding" style={{ backgroundColor: 'var(--bg-main)' }}>
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '8rem' }}>
+            <motion.h2 variants={fadeUpVariant} className="section-title">Case Studies</motion.h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
               {caseStudies.map((p, i) => (
-                <motion.div key={i} variants={fadeUpVariant} style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', position: 'relative' }}>
-                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '350px', objectFit: 'cover', opacity: 0.8 }} />
-                  <div style={{ padding: '2.5rem' }}>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '0.5rem', textTransform: 'uppercase' }}>{p.name}</h3>
-                    <p style={{ color: 'var(--accent-color)', fontWeight: '700', fontSize: '1.125rem', letterSpacing: '0.05em' }}>{p.result}</p>
+                <motion.div key={i} variants={fadeUpVariant} className="enterprise-card" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '350px' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: '900', marginBottom: '1rem', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{p.name}</h3>
+                    <p style={{ fontWeight: '700', fontSize: '1.5rem', lineHeight: '1.3' }}>{p.result}</p>
+                  </div>
+                  <div style={{ marginTop: '3rem' }}>
+                    <p style={{ color: 'var(--accent-color)', fontWeight: '900', fontSize: '4rem', lineHeight: '1' }}>{p.metric}</p>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '1rem', marginTop: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{p.desc}</p>
                   </div>
                 </motion.div>
               ))}

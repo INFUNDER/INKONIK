@@ -23,6 +23,7 @@ body {
   background-color: var(--bg-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Fix horizontal scroll */
 }
 
 a {
@@ -90,12 +91,13 @@ a {
 }
 
 .btn-outline:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
 }
 
 .btn-outline:hover .ik-mark {
-  color: var(--secondary-color);
+  color: #ffffff;
 }
 
 /* Enterprise Typography & Spacing */
