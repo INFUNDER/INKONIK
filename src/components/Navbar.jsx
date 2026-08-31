@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function Navbar() {
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
 
   return (
     <header style={{ borderBottom: '1px solid var(--border-color)', padding: '1rem 0' }}>
@@ -17,6 +17,7 @@ export default function Navbar() {
           
           {user ? (
             <>
+              {isAdmin && <Link to="/admin" style={{ fontWeight: '500', color: 'var(--accent-color)' }}>Admin</Link>}
               <Link to="/dashboard" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>Dashboard</Link>
             </>
           ) : (
