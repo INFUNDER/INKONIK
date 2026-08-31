@@ -1,28 +1,23 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { motion } from 'framer-motion';
 
 export default function Home() {
-  const [formData, setFormData] = useState({ name: '', email: '', service: 'Social Media', message: '' });
-  const [submitStatus, setSubmitStatus] = useState({ loading: false, success: false, error: null });
+  const [formData, setFormData] = useState({ name: '', email: '', service: '', message: '' });
+  const [status, setStatus] = useState('');
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
-    setSubmitStatus({ loading: true, success: false, error: null });
+    setStatus('Submitting...');
     
-    const { error } = await supabase
-      .from('contact_submissions')
-      .insert([{ 
-        name: formData.name, 
-        email: formData.email, 
-        service: formData.service, 
-        message: formData.message 
-      }]);
-
+    const { error } = await supabase.from('contact_submissions').insert([formData]);
+    
     if (error) {
-      setSubmitStatus({ loading: false, success: false, error: error.message });
+      console.error(error);
+      setStatus('Error submitting form. Please try again.');
     } else {
-      setSubmitStatus({ loading: false, success: true, error: null });
-      setFormData({ name: '', email: '', service: 'Social Media', message: '' });
+      setStatus('Message sent successfully! We will be in touch soon.');
+      setFormData({ name: '', email: '', service: '', message: '' });
     }
   };
 
@@ -38,111 +33,186 @@ export default function Home() {
     { name: 'Viral Campaign', result: '10k New Followers in 3 Months', image: '/images/portfolio_3.jpg' }
   ];
 
+  const testimonials = [
+    { text: "INKONIK completely transformed our digital presence. Our lead volume tripled within the first quarter.", author: "Sarah Jenkins", role: "CMO, TechStartup" },
+    { text: "The ROI on their Google Ads campaigns is unparalleled. They don't just generate traffic, they generate revenue.", author: "Marcus Thorne", role: "Founder, EcoRetail" },
+    { text: "Their SEO strategy put us on page 1 for our most competitive keywords. Highly recommend this elite team.", author: "Elena Rostova", role: "VP Marketing, CloudNine" }
+  ];
+
+  // Shared animation variants
+  const fadeUpVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  };
+  
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  };
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="container section-padding" style={{ textAlign: 'center' }}>
-        <div className="animate-fade-in-up">
-          <h1 className="hero-title">
+      <section className="container section-padding" style={{ textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div className="hero-grid"></div>
+        <div className="hero-bg-gradient"></div>
+        
+        <motion.div 
+          initial="hidden" 
+          animate="visible" 
+          variants={staggerContainer}
+          style={{ position: 'relative', zIndex: 10 }}
+        >
+          <motion.h1 variants={fadeUpVariant} className="hero-title">
             Dominate Your Market.<br />
             <span style={{ color: 'var(--accent-color)' }}>Scale Your Brand.</span>
-          </h1>
-          <p className="hero-subtitle">
+          </motion.h1>
+          <motion.p variants={fadeUpVariant} className="hero-subtitle">
             We are INKONIK—a premium digital marketing agency specializing in high-converting Social Media Strategies, elite SEO Optimization, and ROI-focused Google Ads.
-          </p>
-          <div className="flex flex-wrap-mobile justify-center gap-4">
-            <a href="#contact" className="btn btn-primary hover-lift">Start a Project</a>
-            <a href="#portfolio" className="btn btn-outline hover-lift">View Our Work</a>
-          </div>
+          </motion.p>
+          <motion.div variants={fadeUpVariant} className="flex flex-wrap-mobile justify-center gap-4">
+            <a href="#contact" className="btn btn-primary btn-premium" style={{ color: 'white', border: 'none' }}>Start a Project</a>
+            <a href="#portfolio" className="btn btn-outline hover-lift" style={{ background: 'white' }}>View Our Work</a>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Infinite Logo Marquee */}
+      <section className="marquee-container">
+        <div className="marquee-content">
+          <span>FORBES</span>
+          <span>TECHCRUNCH</span>
+          <span>WIRED</span>
+          <span>BLOOMBERG</span>
+          <span>FAST COMPANY</span>
+          <span>INC 5000</span>
+          {/* Duplicate for seamless loop */}
+          <span>FORBES</span>
+          <span>TECHCRUNCH</span>
+          <span>WIRED</span>
+          <span>BLOOMBERG</span>
+          <span>FAST COMPANY</span>
+          <span>INC 5000</span>
         </div>
       </section>
 
       {/* Services Section */}
       <section id="services" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="container">
-          <h2 className="animate-fade-in-up section-title">Our Expertise</h2>
+        <motion.div 
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.h2 variants={fadeUpVariant} className="section-title">Our Expertise</motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {services.map((s, i) => (
-              <div key={i} className={`hover-lift animate-fade-in-up delay-${(i + 1) * 100}`} style={{ background: 'white', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+              <motion.div key={i} variants={fadeUpVariant} className="hover-lift" style={{ background: 'white', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', border: '1px solid var(--border-color)' }}>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>{s.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>{s.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Portfolio Section */}
       <section id="portfolio" className="container section-padding">
-        <h2 className="animate-fade-in-up section-title">Proven Results</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
-          {portfolio.map((p, i) => (
-            <div key={i} className={`hover-lift animate-fade-in-up delay-${(i + 1) * 100}`} style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', textAlign: 'left', background: 'white' }}>
-              <img src={p.image} alt={p.name} style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
-              <div style={{ padding: '2rem' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{p.name}</h3>
-                <p style={{ color: 'var(--accent-color)', fontWeight: '600', fontSize: '1.1rem' }}>{p.result}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.h2 variants={fadeUpVariant} className="section-title">Proven Results</motion.h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+            {portfolio.map((p, i) => (
+              <motion.div key={i} variants={fadeUpVariant} className="hover-lift" style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', textAlign: 'left', background: 'white' }}>
+                <img src={p.image} alt={p.name} style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
+                <div style={{ padding: '2rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{p.name}</h3>
+                  <p style={{ color: 'var(--accent-color)', fontWeight: '600', fontSize: '1.1rem' }}>{p.result}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section style={{ backgroundColor: '#000', color: '#fff' }} className="section-padding">
+        <motion.div 
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.h2 variants={fadeUpVariant} className="section-title" style={{ color: '#fff' }}>Client Success Stories</motion.h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {testimonials.map((t, i) => (
+              <motion.div key={i} variants={fadeUpVariant} style={{ background: '#111', padding: '2.5rem', borderRadius: '12px', border: '1px solid #333' }}>
+                <p style={{ fontSize: '1.1rem', fontStyle: 'italic', marginBottom: '1.5rem', color: '#ccc' }}>"{t.text}"</p>
+                <div>
+                  <p style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{t.author}</p>
+                  <p style={{ color: 'var(--accent-color)', fontSize: '0.875rem' }}>{t.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" style={{ backgroundColor: 'var(--bg-secondary)', padding: '5rem 0' }}>
-        <div className="container" style={{ maxWidth: '600px' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center' }}>Let's Talk</h2>
-          <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem' }}>Ready to scale? Fill out the form below and we'll be in touch.</p>
-          
-          <form onSubmit={handleContactSubmit} style={{ background: 'white', padding: '2.5rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-            {submitStatus.success && <div style={{ color: 'green', marginBottom: '1rem', padding: '1rem', background: '#ecfdf5', borderRadius: '4px' }}>Thanks! We've received your inquiry and will respond shortly.</div>}
-            {submitStatus.error && <div style={{ color: 'red', marginBottom: '1rem', padding: '1rem', background: '#fef2f2', borderRadius: '4px' }}>Error: {submitStatus.error}</div>}
+        <motion.div 
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <div style={{ maxWidth: '600px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', border: '1px solid var(--border-color)' }}>
+            <motion.h2 variants={fadeUpVariant} style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center' }}>Ready to Scale?</motion.h2>
+            <motion.p variants={fadeUpVariant} style={{ color: 'var(--text-muted)', textAlign: 'center', marginBottom: '2rem' }}>Let's discuss how we can accelerate your growth.</motion.p>
             
-            <div className="form-group">
-              <label>Name</label>
-              <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
-            </div>
-            <div className="form-group">
-              <label>Service of Interest</label>
-              <select 
-                style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontFamily: 'inherit' }}
-                value={formData.service} 
-                onChange={e => setFormData({...formData, service: e.target.value})}
-              >
-                <option>Social Media</option>
-                <option>SEO</option>
-                <option>Google Ads</option>
-                <option>Full Service</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Message</label>
-              <textarea 
-                required 
-                rows="4"
-                style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
-                value={formData.message} 
-                onChange={e => setFormData({...formData, message: e.target.value})} 
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={submitStatus.loading}>
-              {submitStatus.loading ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
-        </div>
+            <motion.form variants={fadeUpVariant} onSubmit={handleContactSubmit}>
+              <div className="form-group">
+                <label>Name</label>
+                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="John Doe" />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@example.com" />
+              </div>
+              <div className="form-group">
+                <label>Service Interested In</label>
+                <input type="text" value={formData.service} onChange={(e) => setFormData({...formData, service: e.target.value})} placeholder="SEO, Social Media, etc." />
+              </div>
+              <div className="form-group">
+                <label>Message</label>
+                <textarea 
+                  required 
+                  rows="4" 
+                  style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--border-color)', borderRadius: '4px', fontFamily: 'inherit', resize: 'vertical' }}
+                  value={formData.message} 
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  placeholder="Tell us about your project goals..."
+                ></textarea>
+              </div>
+              <button type="submit" className="btn btn-primary btn-premium" style={{ width: '100%', color: 'white', border: 'none' }}>Send Message</button>
+              {status && <p style={{ marginTop: '1rem', textAlign: 'center', color: status.includes('Error') ? 'red' : 'green', fontWeight: '500' }}>{status}</p>}
+            </motion.form>
+          </div>
+        </motion.div>
       </section>
-
-      {/* Footer */}
 
       {/* Footer */}
       <footer style={{ backgroundColor: '#000', color: '#fff', padding: '4rem 0 2rem 0', textAlign: 'center' }}>
         <div className="container">
-          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>INKONIK.</h2>
-          <p style={{ color: '#aaa', marginBottom: '2rem' }}>Your growth partner for Social Media, SEO, and Google Ads.</p>
+          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '-0.05em' }}>INKONIK.</h2>
+          <p style={{ color: '#aaa', marginBottom: '2rem' }}>Your elite growth partner for Social Media, SEO, and Google Ads.</p>
           <div style={{ borderTop: '1px solid #333', paddingTop: '2rem', color: '#666', fontSize: '0.875rem' }}>
             &copy; {new Date().getFullYear()} INKONIK Marketing Agency. All rights reserved.
           </div>
