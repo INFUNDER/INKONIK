@@ -57,7 +57,7 @@ export default function Home() {
         <div className="hero-video-container">
           {/* PLACEHOLDER VIDEO: Replace 'background.mp4' with your actual video file in the public folder */}
           <video autoPlay loop muted playsInline>
-            {/* <source src="/background.mp4" type="video/mp4" /> */}
+            <source src="/loop_vid.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="hero-overlay"></div>
