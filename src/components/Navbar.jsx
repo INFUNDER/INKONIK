@@ -25,7 +25,7 @@ export default function Navbar() {
           ☰
         </button>
 
-        <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`} style={{ gridColumn: '2', display: 'flex', justifyContent: 'center' }}>
+        <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`} style={{ gridColumn: '2' }}>
           <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link to="/#capabilities" onClick={() => setIsMenuOpen(false)}>Capabilities</Link>
           <Link to="/#case-studies" onClick={() => setIsMenuOpen(false)}>Case Studies</Link>

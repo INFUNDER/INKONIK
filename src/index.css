@@ -24,6 +24,12 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden; /* Fix horizontal scroll */
+  width: 100%;
+}
+
+html, #root {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -240,6 +246,7 @@ a {
 
 .nav-links {
   display: flex;
+  justify-content: center;
   gap: 2rem;
   align-items: center;
   font-weight: 600;
