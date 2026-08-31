@@ -44,7 +44,7 @@ export default function Admin() {
         {/* Leads Section */}
         <section className="animate-fade-in-up delay-100">
           <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Incoming Leads</h2>
-          <div style={{ background: 'white', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', overflowX: 'auto', border: '1px solid var(--border-color)' }}>
+          <div className="enterprise-card" style={{ padding: '0', background: 'var(--bg-secondary)', overflowX: 'auto', border: '1px solid var(--border-color)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '600px' }}>
               <thead>
                 <tr style={{ borderBottom: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)' }}>
@@ -77,7 +77,7 @@ export default function Admin() {
         {/* Projects Section */}
         <section className="animate-fade-in-up delay-200">
           <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Client Projects</h2>
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', border: '1px solid var(--border-color)' }}>
+          <div className="enterprise-card" style={{ background: 'var(--bg-secondary)', padding: '2rem', border: '1px solid var(--border-color)' }}>
             <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.95rem' }}>To assign a new project to a client, you currently need to use the Supabase SQL editor or Table editor. Status updates will be built here in the future.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {projects.length === 0 ? (

@@ -41,7 +41,7 @@ export default function Dashboard() {
         <button onClick={signOut} className="btn btn-outline">Log Out</button>
       </div>
 
-      <div style={{ background: 'white', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+      <div className="enterprise-card" style={{ background: 'var(--bg-secondary)', padding: '2rem', border: '1px solid var(--border-color)' }}>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
           Welcome back, {user.user_metadata?.full_name || user.email}!
         </h2>

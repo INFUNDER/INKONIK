@@ -248,6 +248,10 @@ a {
   letter-spacing: 0.05em;
 }
 
+.mobile-cta {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 3rem;
@@ -277,15 +281,24 @@ a {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--bg-main);
     padding: 2rem;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
     z-index: 50;
     text-align: center;
+    gap: 1.5rem;
   }
 
   .nav-links.open {
     display: flex;
+  }
+
+  .desktop-cta {
+    display: none !important;
+  }
+
+  .mobile-cta {
+    display: flex !important;
   }
 
   .flex-wrap-mobile {

@@ -29,6 +29,21 @@ export default function Navbar() {
           <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link to="/#capabilities" onClick={() => setIsMenuOpen(false)}>Capabilities</Link>
           <Link to="/#case-studies" onClick={() => setIsMenuOpen(false)}>Case Studies</Link>
+
+          {/* Mobile CTA (Hidden on desktop via CSS, or just standard flex on mobile) */}
+          <div className="mobile-cta" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+            {user ? (
+              <>
+                {isAdmin && <Link to="/admin" style={{ color: 'var(--accent-color)', fontWeight: '700', textTransform: 'uppercase' }} onClick={() => setIsMenuOpen(false)}>Admin Console</Link>}
+                <Link to="/dashboard" className="btn btn-primary" style={{ backgroundColor: 'white', color: 'black' }} onClick={() => setIsMenuOpen(false)}>Portal <span className="ik-mark">IK</span></Link>
+              </>
+            ) : (
+              <>
+                <Link to="/login" style={{ color: '#ccc', fontWeight: '700', textTransform: 'uppercase' }} onClick={() => setIsMenuOpen(false)}>Client Login</Link>
+                <Link to="/signup" className="btn btn-primary" style={{ backgroundColor: 'var(--accent-color)', color: 'white', borderColor: 'var(--accent-color)' }} onClick={() => setIsMenuOpen(false)}>Get Started <span className="ik-mark" style={{ color: 'white' }}>IK</span></Link>
+              </>
+            )}
+          </div>
         </nav>
 
         <div className="desktop-cta" style={{ gridColumn: '3', justifySelf: 'end', display: 'flex', gap: '1rem', alignItems: 'center' }}>
