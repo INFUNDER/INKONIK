@@ -41,16 +41,16 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="container" style={{ padding: '8rem 0', textAlign: 'center' }}>
+      <section className="container section-padding" style={{ textAlign: 'center' }}>
         <div className="animate-fade-in-up">
-          <h1 style={{ fontSize: '4rem', fontWeight: 'bold', marginBottom: '1.5rem', letterSpacing: '-0.03em', lineHeight: '1.1' }}>
+          <h1 className="hero-title">
             Dominate Your Market.<br />
             <span style={{ color: 'var(--accent-color)' }}>Scale Your Brand.</span>
           </h1>
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', maxWidth: '650px', margin: '0 auto 2.5rem auto' }}>
+          <p className="hero-subtitle">
             We are INKONIK—a premium digital marketing agency specializing in high-converting Social Media Strategies, elite SEO Optimization, and ROI-focused Google Ads.
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-wrap-mobile justify-center gap-4">
             <a href="#contact" className="btn btn-primary hover-lift">Start a Project</a>
             <a href="#portfolio" className="btn btn-outline hover-lift">View Our Work</a>
           </div>
@@ -58,9 +58,9 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" style={{ backgroundColor: 'var(--bg-secondary)', padding: '6rem 0' }}>
+      <section id="services" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
-          <h2 className="animate-fade-in-up" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3.5rem', textAlign: 'center' }}>Our Expertise</h2>
+          <h2 className="animate-fade-in-up section-title">Our Expertise</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {services.map((s, i) => (
               <div key={i} className={`hover-lift animate-fade-in-up delay-${(i + 1) * 100}`} style={{ background: 'white', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
@@ -73,8 +73,8 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="container" style={{ padding: '6rem 0' }}>
-        <h2 className="animate-fade-in-up" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3.5rem', textAlign: 'center' }}>Proven Results</h2>
+      <section id="portfolio" className="container section-padding">
+        <h2 className="animate-fade-in-up section-title">Proven Results</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
           {portfolio.map((p, i) => (
             <div key={i} className={`hover-lift animate-fade-in-up delay-${(i + 1) * 100}`} style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', textAlign: 'left', background: 'white' }}>
